@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La blockchain en cinq minutes · Bittensor sans jargon</title>
+  <meta name="description" content="Ce qu'est une blockchain, une empreinte, un portefeuille et une clé, avec une démonstration interactive.">
+  <meta name="author" content="Alexandre Majchrzak">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="blockchain-en.html">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body id="haut" class="sombre page-blockchain">
+  <a class="saut" href="#contenu">Aller au contenu</a>
+  <div class="progression" aria-hidden="true"><span></span></div>
+
+  <header class="entete">
+    <a class="marque" href="index.html">
+      <img src="img/logo.svg" alt="" width="36" height="36">
+      <span>Bittensor sans jargon</span>
+    </a>
+    <button class="menu-bouton" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav id="menu" class="menu" aria-label="Navigation principale">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="blockchain.html" aria-current="page">La blockchain</a></li>
+        <li><a href="bittensor.html">Bittensor</a></li>
+        <li><a href="economie.html">Économie</a></li>
+        <li><a href="subnets.html">Subnets</a></li>
+        <li><a href="participer.html">Participer</a></li>
+        <li><a href="sources.html">Sources</a></li>
+      </ul>
+    </nav>
+    <div class="outils">
+      <button id="bouton-theme" class="bouton-petit" aria-pressed="true">Mode clair</button>
+      <a class="bouton-petit" href="blockchain-en.html" lang="en" hreflang="en">English</a>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <header class="entete-page">
+      <p class="surtitre">Étape 1</p>
+      <h1>La blockchain en cinq minutes</h1>
+      <p class="chapeau">Avant Bittensor, il faut comprendre l'outil sur lequel il repose : un grand cahier de comptes que tout le monde peut lire, que personne ne peut effacer, et qui n'appartient à personne.</p>
+    </header>
+
+    <section class="apparait" aria-labelledby="titre-probleme">
+      <h2 id="titre-probleme">Le problème : tenir des comptes sans chef</h2>
+      <p>Dans une classe, une personne tient la caisse des sorties et note qui a payé. Tout le monde lui fait confiance… jusqu'au jour où le cahier disparaît ou est modifié.</p>
+      <p>Une blockchain remplace cette personne par <strong>des milliers de copies du même cahier</strong>, tenues par des ordinateurs dans le monde entier. Pour tricher, il faudrait modifier la majorité des copies en même temps : en pratique, c'est impossible.</p>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-demo">
+      <h2 id="titre-demo">À vous : essayez de tricher</h2>
+      <p>Chaque page du cahier s'appelle un <strong>bloc</strong>. Chaque bloc porte une <strong>empreinte</strong> (un « hash ») calculée à partir de son contenu <em>et</em> de l'empreinte du bloc précédent. Changez une seule lettre dans un bloc et regardez ce qui arrive aux suivants.</p>
+      <div id="chaine" class="chaine" data-langue="fr">
+        <article class="bloc" data-index="0"><h3>Bloc 1</h3><label for="donnees-0">Contenu</label><textarea id="donnees-0" rows="3">Léa envoie 5 TAO à Noé</textarea><p class="hash-ligne">Précédent : <code class="precedent">0000…</code></p><p class="hash-ligne">Empreinte : <code class="empreinte"></code></p><p class="etat-bloc"></p></article>
+        <article class="bloc" data-index="1"><h3>Bloc 2</h3><label for="donnees-1">Contenu</label><textarea id="donnees-1" rows="3">Noé envoie 2 TAO à Sami</textarea><p class="hash-ligne">Précédent : <code class="precedent"></code></p><p class="hash-ligne">Empreinte : <code class="empreinte"></code></p><p class="etat-bloc"></p></article>
+        <article class="bloc" data-index="2"><h3>Bloc 3</h3><label for="donnees-2">Contenu</label><textarea id="donnees-2" rows="3">Sami confie 1 TAO à un validateur</textarea><p class="hash-ligne">Précédent : <code class="precedent"></code></p><p class="hash-ligne">Empreinte : <code class="empreinte"></code></p><p class="etat-bloc"></p></article>
+        <article class="bloc" data-index="3"><h3>Bloc 4</h3><label for="donnees-3">Contenu</label><textarea id="donnees-3" rows="3">Le réseau crée 0,5 TAO</textarea><p class="hash-ligne">Précédent : <code class="precedent"></code></p><p class="hash-ligne">Empreinte : <code class="empreinte"></code></p><p class="etat-bloc"></p></article>
+      </div>
+      <p class="actions-demo"><button id="reparer" class="bouton bouton-contour">Remettre le contenu d'origine</button></p>
+      <p class="message-demo" id="message-chaine" aria-live="polite"></p>
+      <p class="note">Les empreintes sont calculées en direct avec l'algorithme SHA-256, le même que celui de Bitcoin. Seuls les 16 premiers caractères sont affichés.</p>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-qui">
+      <h2 id="titre-qui">Qui a le droit d'écrire le bloc suivant ?</h2>
+      <p>C'est la vraie question de toute blockchain. Bitcoin récompense ceux qui résolvent un calcul très coûteux et parfaitement inutile en dehors du réseau : c'est la <strong>preuve de travail</strong>. Des fermes entières de machines ne font que ça.</p>
+      <p>Bittensor fait un pari différent : <strong>et si le travail récompensé était utile ?</strong> Sa blockchain, nommée Subtensor, ne paie pas des calculs vides mais des services d'intelligence artificielle, notés par d'autres participants. La page suivante montre comment.</p>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-cles">
+      <h2 id="titre-cles">Le portefeuille : un coffre et un badge</h2>
+      <div class="media-texte">
+        <img src="img/cles.svg" alt="Dessin d'un coffre-fort étiqueté coldkey relié par des pointillés à un badge étiqueté hotkey" width="360" height="180">
+        <div>
+          <p>Sur Bittensor, un portefeuille est fait de deux clés :</p>
+          <ul>
+            <li>La <strong>coldkey</strong> est le coffre-fort : elle possède vos TAO et autorise les dépenses. Elle reste au chaud, idéalement sur un ordinateur qui ne fait rien d'autre.</li>
+            <li>La <strong>hotkey</strong> est le badge de travail : la machine qui mine ou qui valide s'en sert pour signer son travail, sans jamais pouvoir vider le coffre.</li>
+          </ul>
+          <p>Le coffre s'ouvre avec une <strong>phrase secrète</strong> de 12 ou 24 mots. Qui connaît ces mots possède les fonds, définitivement : aucune banque, aucun service client ne peut les rendre.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-video-chaine">
+      <h2 id="titre-video-chaine">La même chose, en vidéo</h2>
+      <p>La chaîne Simply Explained montre en six minutes comment les blocs, les empreintes et les copies du réseau se protègent les uns les autres (en anglais, sous-titres disponibles).</p>
+      <div class="video">
+        <iframe src="https://www.youtube-nocookie.com/embed/SSo_EIwHSd4" title="Vidéo : How does a blockchain work, par Simply Explained" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p class="source">Source : Simply Explained, « How does a blockchain work », YouTube.</p>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-glossaire">
+      <h2 id="titre-glossaire">Le petit vocabulaire</h2>
+      <dl class="glossaire">
+        <dt>Bloc</dt><dd>Une page du registre, qui regroupe les opérations des dernières secondes.</dd>
+        <dt>Empreinte (hash)</dt><dd>Un code calculé à partir d'un contenu. Le moindre changement du contenu donne une empreinte totalement différente.</dd>
+        <dt>Jeton (token)</dt><dd>Une unité de valeur inscrite dans la blockchain, comme le TAO.</dd>
+        <dt>Portefeuille (wallet)</dt><dd>Les clés qui prouvent que des jetons vous appartiennent. Les jetons, eux, restent dans la blockchain.</dd>
+        <dt>Staker</dt><dd>Bloquer des jetons pour soutenir un acteur du réseau et recevoir une part de ses récompenses.</dd>
+      </dl>
+      <p class="suite"><a class="bouton" href="bittensor.html">Étape suivante : Bittensor →</a></p>
+    </section>
+  </main>
+
+  <footer class="pied">
+    <p class="pied-logo">τ</p>
+    <p>Un site d'Alexandre Majchrzak, pour faire découvrir Bittensor à qui n'a jamais touché à la blockchain.</p>
+    <p>Ce site explique, il ne conseille pas : rien ici n'est un conseil financier. Les cryptomonnaies peuvent perdre presque toute leur valeur.</p>
+    <p>Informations vérifiées le 11 novembre 2026. <a href="sources.html">Sources et crédits</a> · <a href="#haut">Revenir en haut</a></p>
+  </footer>
+</body>
+</html>

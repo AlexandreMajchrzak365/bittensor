@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comment marche Bittensor · Bittensor sans jargon</title>
+  <meta name="description" content="Subnets, mineurs, validateurs et consensus Yuma : le fonctionnement de Bittensor, avec un simulateur de jury.">
+  <meta name="author" content="Alexandre Majchrzak">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="bittensor-en.html">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body id="haut" class="sombre page-bittensor">
+  <a class="saut" href="#contenu">Aller au contenu</a>
+  <div class="progression" aria-hidden="true"><span></span></div>
+
+  <header class="entete">
+    <a class="marque" href="index.html">
+      <img src="img/logo.svg" alt="" width="36" height="36">
+      <span>Bittensor sans jargon</span>
+    </a>
+    <button class="menu-bouton" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav id="menu" class="menu" aria-label="Navigation principale">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="blockchain.html">La blockchain</a></li>
+        <li><a href="bittensor.html" aria-current="page">Bittensor</a></li>
+        <li><a href="economie.html">Économie</a></li>
+        <li><a href="subnets.html">Subnets</a></li>
+        <li><a href="participer.html">Participer</a></li>
+        <li><a href="sources.html">Sources</a></li>
+      </ul>
+    </nav>
+    <div class="outils">
+      <button id="bouton-theme" class="bouton-petit" aria-pressed="true">Mode clair</button>
+      <a class="bouton-petit" href="bittensor-en.html" lang="en" hreflang="en">English</a>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <header class="entete-page">
+      <p class="surtitre">Étape 2</p>
+      <h1>Comment marche Bittensor</h1>
+      <p class="chapeau">Une blockchain qui ne paie pas des calculs inutiles, mais des intelligences artificielles notées par d'autres intelligences artificielles.</p>
+    </header>
+
+    <section class="apparait" aria-labelledby="titre-histoire">
+      <h2 id="titre-histoire">Une idée de 2020</h2>
+      <p>En 2020, un article signé du pseudonyme <strong>Yuma Rao</strong>, avec Jacob Steeves et Ala Shaabana, décrit « un marché d'intelligence de pair à pair » : des modèles d'IA qui s'évaluent entre eux et sont payés selon leur utilité. La fondation Opentensor lance le réseau en 2021 ; la blockchain actuelle tourne depuis 2023.</p>
+      <ol class="frise">
+        <li><span>2020</span> Le livre blanc</li>
+        <li><span>2021</span> Lancement du réseau</li>
+        <li><span>2023</span> La blockchain actuelle</li>
+        <li><span>févr. 2025</span> Chaque subnet reçoit sa propre monnaie</li>
+        <li><span>déc. 2025</span> Première réduction de moitié</li>
+        <li><span>oct. 2026</span> Les subnets choisissent leurs règles de partage</li>
+      </ol>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-subnets">
+      <h2 id="titre-subnets">Les subnets : un concours par métier</h2>
+      <div class="media-texte">
+        <img src="img/subnet.svg" alt="Schéma d'un subnet : un propriétaire en haut, deux validateurs au milieu, quatre mineurs en bas reliés aux validateurs" width="400" height="260">
+        <div>
+          <p>Bittensor n'est pas une seule IA, mais une <strong>fédération de concours</strong> appelés subnets (sous-réseaux). Chacun est créé par un <strong>propriétaire</strong>, qui écrit les règles : quelle tâche les mineurs doivent accomplir et comment les validateurs doivent la noter.</p>
+          <p>Le subnet 64 paie l'exécution de modèles d'IA, le subnet 4 du calcul confidentiel, le subnet 62 des agents qui écrivent du code… Chaque subnet a au maximum 256 places de mineurs et de validateurs ; quand il est plein, le moins bon perd sa place au profit d'un nouveau venu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-cycle">
+      <h2 id="titre-cycle">Un tour de jeu, toutes les 72 minutes</h2>
+      <ol class="etapes-cycle">
+        <li><strong>Le validateur pose une question</strong> ou envoie une tâche aux mineurs.</li>
+        <li><strong>Les mineurs répondent</strong> avec leurs modèles et leurs machines.</li>
+        <li><strong>Le validateur note</strong> chaque réponse et inscrit ses notes (les « poids ») dans la blockchain.</li>
+        <li><strong>La blockchain combine les notes</strong> de tous les validateurs : c'est le consensus Yuma.</li>
+        <li><strong>Les récompenses tombent</strong> : toutes les 360 blocs, soit environ 72 minutes, les nouveaux jetons sont partagés.</li>
+      </ol>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-simulateur">
+      <h2 id="titre-simulateur">Simulateur : et si un juré trichait ?</h2>
+      <p>Trois validateurs notent trois mineurs. Le poids de chaque juré dépend des TAO qui lui sont confiés. Pour chaque mineur, la blockchain retient la <strong>note médiane pondérée</strong> : celle sur laquelle la majorité des TAO est d'accord. Une note plus généreuse que ce consensus est rabotée, et le juré qui l'a donnée perd de l'influence.</p>
+      <p>Essayez : rendez le validateur C très généreux avec le mineur 3 (son ami ?) et observez ce que le mineur 3 reçoit vraiment.</p>
+      <div id="yuma" class="yuma" data-langue="fr">
+        <div class="yuma-jures"></div>
+        <div class="yuma-resultats">
+          <h3>Ce que reçoivent les mineurs</h3>
+          <div class="barres" id="yuma-barres"></div>
+          <h3>Accord de chaque validateur avec le consensus</h3>
+          <div class="barres" id="yuma-accord"></div>
+        </div>
+      </div>
+      <p class="actions-demo">
+        <button class="bouton bouton-contour" data-scenario="honnete">Jury honnête</button>
+        <button class="bouton bouton-contour" data-scenario="tricheur">Un juré tricheur</button>
+        <button class="bouton bouton-contour" data-scenario="majorite">Un tricheur majoritaire</button>
+      </p>
+      <p class="note">Simplification du vrai consensus Yuma, qui ajoute notamment une mémoire des notes passées (les « liens » entre validateurs et mineurs). Dernier scénario : si un tricheur détient la majorité des TAO, le consensus ne protège plus rien. C'est la limite de tout système de vote.</p>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-recents">
+      <h2 id="titre-recents">Ce qui a changé récemment</h2>
+      <div class="grille-2">
+        <article class="encadre"><h3>Dynamic TAO (février 2025)</h3><p>Chaque subnet a sa propre monnaie, appelée <strong>alpha</strong>. Pour soutenir un subnet, on échange ses TAO contre son alpha : la page <a href="economie.html">Économie</a> explique ce mécanisme.</p></article>
+        <article class="encadre"><h3>Taoflow (novembre 2025)</h3><p>Les nouveaux TAO vont en priorité aux subnets dans lesquels les gens <strong>apportent</strong> plus de TAO qu'ils n'en retirent : l'argent suit l'intérêt réel.</p></article>
+        <article class="encadre"><h3>Null Consensus (octobre 2026)</h3><p>Un subnet peut désormais choisir d'être noté par un seul validateur, le plus doté, et accueillir jusqu'à 2 500 participants au lieu de 256. Plus simple, mais moins décentralisé.</p></article>
+        <article class="encadre"><h3>eTAO (octobre 2026)</h3><p>Le propriétaire d'un subnet choisit comment partager les récompenses entre lui, les validateurs et les mineurs, dans des limites fixées par le réseau.</p></article>
+      </div>
+      <p class="suite"><a class="bouton" href="economie.html">Étape suivante : l'économie →</a></p>
+    </section>
+  </main>
+
+  <footer class="pied">
+    <p class="pied-logo">τ</p>
+    <p>Un site d'Alexandre Majchrzak, pour faire découvrir Bittensor à qui n'a jamais touché à la blockchain.</p>
+    <p>Ce site explique, il ne conseille pas : rien ici n'est un conseil financier. Les cryptomonnaies peuvent perdre presque toute leur valeur.</p>
+    <p>Informations vérifiées le 11 novembre 2026. <a href="sources.html">Sources et crédits</a> · <a href="#haut">Revenir en haut</a></p>
+  </footer>
+</body>
+</html>

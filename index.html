@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accueil · Bittensor sans jargon</title>
+  <meta name="description" content="Bittensor et son jeton TAO expliqués à quelqu'un qui ne connaît rien à la blockchain : subnets, mineurs, validateurs, économie et participation.">
+  <meta name="author" content="Alexandre Majchrzak">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="index-en.html">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body id="haut" class="sombre page-index">
+  <a class="saut" href="#contenu">Aller au contenu</a>
+  <div class="progression" aria-hidden="true"><span></span></div>
+
+  <header class="entete">
+    <a class="marque" href="index.html">
+      <img src="img/logo.svg" alt="" width="36" height="36">
+      <span>Bittensor sans jargon</span>
+    </a>
+    <button class="menu-bouton" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav id="menu" class="menu" aria-label="Navigation principale">
+      <ul>
+        <li><a href="index.html" aria-current="page">Accueil</a></li>
+        <li><a href="blockchain.html">La blockchain</a></li>
+        <li><a href="bittensor.html">Bittensor</a></li>
+        <li><a href="economie.html">Économie</a></li>
+        <li><a href="subnets.html">Subnets</a></li>
+        <li><a href="participer.html">Participer</a></li>
+        <li><a href="sources.html">Sources</a></li>
+      </ul>
+    </nav>
+    <div class="outils">
+      <button id="bouton-theme" class="bouton-petit" aria-pressed="true">Mode clair</button>
+      <a class="bouton-petit" href="index-en.html" lang="en" hreflang="en">English</a>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="hero">
+      <canvas id="reseau" aria-hidden="true"></canvas>
+      <div class="hero-texte">
+        <p class="surtitre">Pour celles et ceux qui n'ont jamais touché à la blockchain</p>
+        <h1>Bittensor, <span class="degrade">sans jargon</span></h1>
+        <p class="chapeau">Un réseau où des milliers d'ordinateurs mettent leurs intelligences artificielles en concurrence, et où une monnaie, le <strong>TAO</strong>, récompense les meilleures. Toutes les douze secondes, sans patron.</p>
+        <p class="boutons">
+          <a class="bouton" href="blockchain.html">Commencer par la blockchain</a>
+          <a class="bouton bouton-contour" href="bittensor.html">Aller droit à Bittensor</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-image">
+      <h2 id="titre-image">Bittensor en une image</h2>
+      <div class="analogie">
+        <p>Imaginez un <strong>concours de cuisine qui ne s'arrête jamais</strong>.</p>
+        <ul class="liste-analogie">
+          <li><span class="pastille">Cuisiniers</span><span>Ils préparent des plats en continu : ce sont les <strong>mineurs</strong>, qui font tourner des IA.</span></li>
+          <li><span class="pastille">Jury</span><span>Il goûte et note chaque plat : ce sont les <strong>validateurs</strong>.</span></li>
+          <li><span class="pastille">Cagnotte</span><span>Elle est versée toutes les douze secondes selon les notes : ce sont les <strong>TAO</strong>.</span></li>
+          <li><span class="pastille">Spectateurs</span><span>Ils confient leurs pièces au jury en qui ils ont confiance et touchent une part des gains : ce sont les <strong>stakers</strong>.</span></li>
+          <li><span class="pastille">Épreuves</span><span>Pâtisserie, sushis, soupes : chaque épreuve a ses propres règles. Ce sont les <strong>subnets</strong>, plus de 120 aujourd'hui.</span></li>
+        </ul>
+        <p>Personne ne dirige le concours : les règles sont écrites dans un programme, et les comptes sont tenus dans un registre public, la <a href="blockchain.html">blockchain</a>.</p>
+      </div>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-roles">
+      <h2 id="titre-roles">Trois façons de jouer</h2>
+      <div class="grille-3">
+        <article class="carte-role">
+          <img src="img/mineur.svg" alt="Dessin d'une carte graphique qui transforme une demande en réponse" width="200" height="160">
+          <h3>Mineur</h3>
+          <p>Fait le travail : répondre à des questions, louer sa carte graphique, écrire du code, prévoir la météo… selon le subnet.</p>
+        </article>
+        <article class="carte-role">
+          <img src="img/validateur.svg" alt="Dessin d'une loupe qui coche la meilleure de trois barres de score" width="200" height="160">
+          <h3>Validateur</h3>
+          <p>Teste les mineurs, leur donne des notes et inscrit ces notes dans la blockchain.</p>
+        </article>
+        <article class="carte-role">
+          <img src="img/staker.svg" alt="Dessin d'une pile de pièces TAO confiée à un validateur" width="200" height="160">
+          <h3>Staker</h3>
+          <p>Confie (« stake ») ses TAO à un validateur ou à un subnet, et reçoit une part des récompenses.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-chiffres">
+      <h2 id="titre-chiffres">Quatre chiffres pour commencer</h2>
+      <div class="chiffres">
+        <div><p class="chiffre" data-compteur="21000000">21 000 000</p><p>TAO au maximum, jamais plus, comme les 21 millions de bitcoins</p></div>
+        <div><p class="chiffre" data-compteur="12" data-suffixe=" s">12 s</p><p>entre deux blocs : la cagnotte tombe 7 200 fois par jour</p></div>
+        <div><p class="chiffre" data-compteur="0.5" data-decimales="1" data-suffixe=" τ">0,5 τ</p><p>créés à chaque bloc depuis la première réduction de moitié, en décembre 2025</p></div>
+        <div><p class="chiffre" data-compteur="128">128</p><p>subnets actifs en octobre 2026, pour 256 places possibles</p></div>
+      </div>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-video">
+      <h2 id="titre-video">Vingt minutes pour tout comprendre</h2>
+      <p>Mark Jeffrey, auteur et podcasteur, explique Bittensor de A à Z à la chaîne JM Crypto. C'est en anglais : activez les sous-titres traduits automatiquement si besoin.</p>
+      <div class="video">
+        <iframe src="https://www.youtube-nocookie.com/embed/pnL9yk4Jf0A" title="Vidéo : The Greatest Bittensor Explanation of All Time, avec Mark Jeffrey" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p class="source">Source : JM Crypto, « The Greatest Bittensor Explanation of ALL TIME (feat. Mark Jeffrey) », YouTube, 2026.</p>
+    </section>
+
+    <section class="apparait deux-colonnes" aria-label="Pour et contre">
+      <div class="encadre encadre-vert">
+        <h2>Pourquoi c'est fascinant</h2>
+        <ul>
+          <li>Une IA ouverte, construite par des milliers de participants plutôt que par quelques géants.</li>
+          <li>Des services qui rapportent déjà de l'argent réel : calcul, location de cartes graphiques, agents qui codent.</li>
+          <li>Tout est public : n'importe qui peut lire les règles, les notes et les paiements.</li>
+        </ul>
+      </div>
+      <div class="encadre encadre-orange">
+        <h2>Pourquoi rester prudent</h2>
+        <ul>
+          <li>Le prix du TAO monte et descend violemment : il valait en 2026 moins d'un tiers de son record.</li>
+          <li>La gouvernance reste très centralisée : trois signataires contrôlent encore les mises à jour.</li>
+          <li>Les arnaques sont nombreuses autour des cryptomonnaies : personne ne vous demandera jamais votre phrase secrète.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pied">
+    <p class="pied-logo">τ</p>
+    <p>Un site d'Alexandre Majchrzak, pour faire découvrir Bittensor à qui n'a jamais touché à la blockchain.</p>
+    <p>Ce site explique, il ne conseille pas : rien ici n'est un conseil financier. Les cryptomonnaies peuvent perdre presque toute leur valeur.</p>
+    <p>Informations vérifiées le 11 novembre 2026. <a href="sources.html">Sources et crédits</a> · <a href="#haut">Revenir en haut</a></p>
+  </footer>
+</body>
+</html>

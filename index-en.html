@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home · Bittensor, jargon-free</title>
+  <meta name="description" content="Bittensor and its TAO token explained to someone who knows nothing about blockchain: subnets, miners, validators, economy and how to take part.">
+  <meta name="author" content="Alexandre Majchrzak">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="fr" href="index.html">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body id="haut" class="sombre page-index">
+  <a class="saut" href="#contenu">Skip to content</a>
+  <div class="progression" aria-hidden="true"><span></span></div>
+
+  <header class="entete">
+    <a class="marque" href="index-en.html">
+      <img src="img/logo.svg" alt="" width="36" height="36">
+      <span>Bittensor, jargon-free</span>
+    </a>
+    <button class="menu-bouton" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav id="menu" class="menu" aria-label="Main navigation">
+      <ul>
+        <li><a href="index-en.html" aria-current="page">Home</a></li>
+        <li><a href="blockchain-en.html">Blockchain</a></li>
+        <li><a href="bittensor-en.html">Bittensor</a></li>
+        <li><a href="economie-en.html">Economy</a></li>
+        <li><a href="subnets-en.html">Subnets</a></li>
+        <li><a href="participer-en.html">Take part</a></li>
+        <li><a href="sources-en.html">Sources</a></li>
+      </ul>
+    </nav>
+    <div class="outils">
+      <button id="bouton-theme" class="bouton-petit" aria-pressed="true">Light mode</button>
+      <a class="bouton-petit" href="index.html" lang="fr" hreflang="fr">Français</a>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="hero">
+      <canvas id="reseau" aria-hidden="true"></canvas>
+      <div class="hero-texte">
+        <p class="surtitre">For people who have never used a blockchain</p>
+        <h1>Bittensor, <span class="degrade">jargon-free</span></h1>
+        <p class="chapeau">A network where thousands of computers make their artificial intelligences compete, and where a currency, <strong>TAO</strong>, rewards the best ones. Every twelve seconds, with no boss.</p>
+        <p class="boutons">
+          <a class="bouton" href="blockchain-en.html">Start with the blockchain</a>
+          <a class="bouton bouton-contour" href="bittensor-en.html">Go straight to Bittensor</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-image">
+      <h2 id="titre-image">Bittensor in one picture</h2>
+      <div class="analogie">
+        <p>Imagine a <strong>cooking contest that never ends</strong>.</p>
+        <ul class="liste-analogie">
+          <li><span class="pastille">Cooks</span><span>They prepare dishes non-stop: these are the <strong>miners</strong>, who run AIs.</span></li>
+          <li><span class="pastille">Judges</span><span>They taste and score every dish: these are the <strong>validators</strong>.</span></li>
+          <li><span class="pastille">Prize pot</span><span>It is paid out every twelve seconds according to the scores: this is <strong>TAO</strong>.</span></li>
+          <li><span class="pastille">Audience</span><span>They lend their coins to a judge they trust and get a share of the winnings: these are the <strong>stakers</strong>.</span></li>
+          <li><span class="pastille">Events</span><span>Pastry, sushi, soups: each event has its own rules. These are the <strong>subnets</strong>, more than 120 today.</span></li>
+        </ul>
+        <p>Nobody runs the contest: the rules are written in a program, and the accounts are kept in a public ledger, the <a href="blockchain-en.html">blockchain</a>.</p>
+      </div>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-roles">
+      <h2 id="titre-roles">Three ways to play</h2>
+      <div class="grille-3">
+        <article class="carte-role">
+          <img src="img/mineur.svg" alt="Drawing of a graphics card turning an input into an output" width="200" height="160">
+          <h3>Miner</h3>
+          <p>Does the work: answering questions, renting out a graphics card, writing code, forecasting the weather… depending on the subnet.</p>
+        </article>
+        <article class="carte-role">
+          <img src="img/validateur.svg" alt="Drawing of a magnifying glass ticking the best of three score bars" width="200" height="160">
+          <h3>Validator</h3>
+          <p>Tests the miners, gives them scores and writes those scores to the blockchain.</p>
+        </article>
+        <article class="carte-role">
+          <img src="img/staker.svg" alt="Drawing of a stack of TAO coins lent to a validator" width="200" height="160">
+          <h3>Staker</h3>
+          <p>Lends (“stakes”) TAO to a validator or a subnet, and receives a share of the rewards.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-chiffres">
+      <h2 id="titre-chiffres">Four numbers to start with</h2>
+      <div class="chiffres">
+        <div><p class="chiffre" data-compteur="21000000">21,000,000</p><p>TAO at most, never more, like the 21 million bitcoins</p></div>
+        <div><p class="chiffre" data-compteur="12" data-suffixe=" s">12 s</p><p>between two blocks: the prize pot drops 7,200 times a day</p></div>
+        <div><p class="chiffre" data-compteur="0.5" data-decimales="1" data-suffixe=" τ">0.5 τ</p><p>created with each block since the first halving, in December 2025</p></div>
+        <div><p class="chiffre" data-compteur="128">128</p><p>active subnets in October 2026, out of 256 possible slots</p></div>
+      </div>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-video">
+      <h2 id="titre-video">Twenty minutes to understand it all</h2>
+      <p>Author and podcaster Mark Jeffrey explains Bittensor from A to Z on the JM Crypto channel.</p>
+      <div class="video">
+        <iframe src="https://www.youtube-nocookie.com/embed/pnL9yk4Jf0A" title="Video: The Greatest Bittensor Explanation of All Time, with Mark Jeffrey" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p class="source">Source: JM Crypto, “The Greatest Bittensor Explanation of ALL TIME (feat. Mark Jeffrey)”, YouTube, 2026.</p>
+    </section>
+
+    <section class="apparait deux-colonnes" aria-label="Pros and cons">
+      <div class="encadre encadre-vert">
+        <h2>Why it is fascinating</h2>
+        <ul>
+          <li>An open AI, built by thousands of participants rather than by a few giants.</li>
+          <li>Services that already earn real money: compute, graphics card rental, coding agents.</li>
+          <li>Everything is public: anyone can read the rules, the scores and the payments.</li>
+        </ul>
+      </div>
+      <div class="encadre encadre-orange">
+        <h2>Why to stay careful</h2>
+        <ul>
+          <li>The price of TAO swings violently: in 2026 it was worth less than a third of its record.</li>
+          <li>Governance is still very centralised: three signers still control the upgrades.</li>
+          <li>Scams are everywhere around cryptocurrencies: nobody will ever need your secret phrase.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pied">
+    <p class="pied-logo">τ</p>
+    <p>A website by Alexandre Majchrzak, introducing Bittensor to people who have never used a blockchain.</p>
+    <p>This website explains, it does not advise: nothing here is financial advice. Cryptocurrencies can lose almost all of their value.</p>
+    <p>Information checked on 11 November 2026. <a href="sources-en.html">Sources and credits</a> · <a href="#haut">Back to top</a></p>
+  </footer>
+</body>
+</html>

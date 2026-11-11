@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>L'économie de l'écosystème · Bittensor sans jargon</title>
+  <meta name="description" content="Offre de TAO, réductions de moitié, monnaies alpha des subnets, partage des récompenses, revenus réels et risques.">
+  <meta name="author" content="Alexandre Majchrzak">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="economie-en.html">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body id="haut" class="sombre page-economie">
+  <a class="saut" href="#contenu">Aller au contenu</a>
+  <div class="progression" aria-hidden="true"><span></span></div>
+
+  <header class="entete">
+    <a class="marque" href="index.html">
+      <img src="img/logo.svg" alt="" width="36" height="36">
+      <span>Bittensor sans jargon</span>
+    </a>
+    <button class="menu-bouton" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav id="menu" class="menu" aria-label="Navigation principale">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="blockchain.html">La blockchain</a></li>
+        <li><a href="bittensor.html">Bittensor</a></li>
+        <li><a href="economie.html" aria-current="page">Économie</a></li>
+        <li><a href="subnets.html">Subnets</a></li>
+        <li><a href="participer.html">Participer</a></li>
+        <li><a href="sources.html">Sources</a></li>
+      </ul>
+    </nav>
+    <div class="outils">
+      <button id="bouton-theme" class="bouton-petit" aria-pressed="true">Mode clair</button>
+      <a class="bouton-petit" href="economie-en.html" lang="en" hreflang="en">English</a>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <header class="entete-page">
+      <p class="surtitre">Étape 3</p>
+      <h1>L'économie de l'écosystème</h1>
+      <p class="chapeau">D'où viennent les TAO, où vont-ils, et qu'est-ce qui leur donne de la valeur ? Trois simulateurs pour le voir.</p>
+    </header>
+
+    <section class="apparait" aria-labelledby="titre-offre">
+      <h2 id="titre-offre">21 millions, et pas un de plus</h2>
+      <p>Comme Bitcoin, Bittensor ne créera jamais plus de <strong>21 millions de TAO</strong>. Au départ, le réseau en créait 1 par bloc, soit 7 200 par jour. Chaque fois que la moitié de ce qui reste à créer est distribuée, la création est <strong>divisée par deux</strong> : c'est le halving. Le premier a eu lieu en décembre 2025, à 10,5 millions de TAO.</p>
+      <figure class="graphique">
+        <svg id="graphique-offre" viewBox="0 0 720 320" role="img" aria-labelledby="titre-graphique desc-graphique"><title id="titre-graphique">Nombre de TAO en circulation, de 2021 à 2045</title><desc id="desc-graphique">La courbe monte vite jusqu'à 10,5 millions en décembre 2025, puis de plus en plus lentement vers 21 millions, avec une réduction de moitié environ tous les quatre ans.</desc></svg>
+        <figcaption>Estimation : les TAO « recyclés » (rendus au réseau) retardent les halvings, dont les dates exactes ne peuvent pas être prévues. Survolez ou parcourez la courbe pour lire les valeurs.</figcaption>
+      </figure>
+      <p class="info-courbe" id="info-courbe" aria-live="polite">Environ 11,7 millions de TAO en circulation en novembre 2026.</p>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-alpha">
+      <h2 id="titre-alpha">Chaque subnet a sa monnaie : l'alpha</h2>
+      <p>Depuis février 2025, chaque subnet possède un <strong>réservoir</strong> qui contient des TAO d'un côté et sa propre monnaie, l'alpha, de l'autre. Pour soutenir un subnet, on verse des TAO dans le réservoir et on reçoit de l'alpha en échange. Le prix dépend du rapport entre les deux : plus on achète, plus l'alpha devient cher. Ce surcoût s'appelle le <strong>glissement</strong> (slippage).</p>
+      <div id="reservoir" class="reservoir" data-langue="fr">
+        <div class="reservoir-visuel" aria-hidden="true">
+          <div class="cuve"><div class="niveau niveau-tao"></div><span>TAO</span></div>
+          <div class="cuve"><div class="niveau niveau-alpha"></div><span>alpha</span></div>
+        </div>
+        <div class="reservoir-commandes">
+          <label for="montant-tao">TAO que vous versez : <output id="sortie-tao">100</output></label>
+          <input type="range" id="montant-tao" min="0" max="5000" step="50" value="100">
+          <dl class="resultats">
+            <dt>Alpha reçus</dt><dd id="alpha-recus">–</dd>
+            <dt>Prix moyen payé</dt><dd id="prix-moyen">–</dd>
+            <dt>Glissement</dt><dd id="glissement">–</dd>
+            <dt>Nouveau prix de l'alpha</dt><dd id="nouveau-prix">–</dd>
+          </dl>
+        </div>
+      </div>
+      <p class="note">Réservoir fictif de 10 000 TAO et 100 000 alpha (prix de départ : 0,1 TAO par alpha), avec la règle « produit constant » utilisée par Bittensor. Les vrais réservoirs ajoutent des frais et changent à chaque bloc.</p>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-partage">
+      <h2 id="titre-partage">Qui reçoit quoi dans un subnet ?</h2>
+      <div class="media-texte">
+        <div class="donut" role="img" aria-label="Partage par défaut : 41 % aux mineurs, 41 % aux validateurs et à leurs stakers, 18 % au propriétaire"><span>alpha<br>créés</span></div>
+        <div>
+          <p>À chaque tour, les alpha créés dans un subnet sont partagés. Par défaut :</p>
+          <ul class="legende">
+            <li><i class="c1"></i><strong>41 %</strong> aux mineurs, selon leurs notes</li>
+            <li><i class="c2"></i><strong>41 %</strong> aux validateurs et aux stakers qui les soutiennent</li>
+            <li><i class="c3"></i><strong>18 %</strong> au propriétaire du subnet</li>
+          </ul>
+          <p>Depuis octobre 2026 (eTAO), chaque propriétaire peut changer ce partage : au plus 33 % pour lui, au plus 50 % pour les validateurs, et au moins 33 % pour les mineurs.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-boucle">
+      <h2 id="titre-boucle">Le cercle vertueux… en théorie</h2>
+      <div class="boucle" aria-describedby="boucle-texte">
+        <span class="point-boucle" aria-hidden="true"></span>
+        <ol id="boucle-texte">
+          <li>Des clients paient un service (une API d'IA, une carte graphique louée…)</li>
+          <li>Le subnet utilise ces revenus pour racheter son alpha</li>
+          <li>Le prix de l'alpha monte et attire des TAO</li>
+          <li>Plus de TAO entrants, donc plus d'émissions pour le subnet</li>
+          <li>Les mineurs sont mieux payés et le service s'améliore</li>
+        </ol>
+      </div>
+      <p>Ce cercle ne tient que si les revenus sont réels. En octobre 2026, les subnets rapportaient ensemble <strong>environ 50 millions de dollars par an</strong> selon une estimation communautaire, en forte hausse mais encore bien en dessous de la valeur des TAO distribués. Une bonne partie de l'économie repose donc encore sur la spéculation.</p>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-root">
+      <h2 id="titre-root">Deux façons de staker</h2>
+      <div class="grille-2">
+        <article class="encadre"><h3>Sur le subnet 0 (« root »)</h3><p>Vos TAO restent des TAO. Le risque est plus faible, le rendement aussi. C'est le choix conseillé aux débutants par la plupart des guides.</p></article>
+        <article class="encadre"><h3>Sur un subnet</h3><p>Vos TAO sont échangés contre l'alpha du subnet. Si le subnet réussit, l'alpha prend de la valeur ; s'il échoue ou est désinscrit, vous pouvez perdre une grande partie de votre mise.</p></article>
+      </div>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-risques">
+      <h2 id="titre-risques">Les risques, sans langue de bois</h2>
+      <ul class="liste-risques">
+        <li><strong>Volatilité.</strong> Le TAO a perdu plus des deux tiers de sa valeur depuis son record. Les monnaies alpha bougent encore plus.</li>
+        <li><strong>Gouvernance.</strong> En avril 2026, l'équipe Covenant AI a quitté Bittensor avec ses trois subnets (dont Templar), en accusant le cofondateur Jacob Steeves de garder le contrôle du réseau, ce qu'il a contesté. Le TAO a perdu environ 15 % en deux heures. La fondation a publié en juin 2026 un plan pour décentraliser entièrement le réseau d'ici décembre 2027.</li>
+        <li><strong>Désinscription.</strong> Un subnet peu soutenu peut perdre sa place et son alpha avec lui.</li>
+        <li><strong>Fonds cotés.</strong> Des gestionnaires comme Grayscale ont demandé à lancer des fonds cotés en bourse sur le TAO. Une demande n'est pas une autorisation.</li>
+      </ul>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-video-pays">
+      <h2 id="titre-video-pays">Bittensor comme un pays</h2>
+      <p>Travis, de la chaîne TAO Templar, compare Bittensor à un pays dont les subnets seraient les entreprises : une bonne façon de comprendre les monnaies alpha et le staking (en anglais).</p>
+      <div class="video">
+        <iframe src="https://www.youtube-nocookie.com/embed/tiZsE5Ly7rM" title="Vidéo : Bittensor TAO, l'analogie du pays, par TAO Templar" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p class="source">Source : TAO Templar, « Bittensor TAO – Country Analogy », YouTube, 2025.</p>
+      <p class="suite"><a class="bouton" href="subnets.html">Étape suivante : les subnets →</a></p>
+    </section>
+  </main>
+
+  <footer class="pied">
+    <p class="pied-logo">τ</p>
+    <p>Un site d'Alexandre Majchrzak, pour faire découvrir Bittensor à qui n'a jamais touché à la blockchain.</p>
+    <p>Ce site explique, il ne conseille pas : rien ici n'est un conseil financier. Les cryptomonnaies peuvent perdre presque toute leur valeur.</p>
+    <p>Informations vérifiées le 11 novembre 2026. <a href="sources.html">Sources et crédits</a> · <a href="#haut">Revenir en haut</a></p>
+  </footer>
+</body>
+</html>

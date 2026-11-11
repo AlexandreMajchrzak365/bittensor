@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Take part · Bittensor, jargon-free</title>
+  <meta name="description" content="How to stake, mine, validate or create a subnet on Bittensor with the btcli command line, and the safety rules.">
+  <meta name="author" content="Alexandre Majchrzak">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="fr" href="participer.html">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body id="haut" class="sombre page-participer">
+  <a class="saut" href="#contenu">Skip to content</a>
+  <div class="progression" aria-hidden="true"><span></span></div>
+
+  <header class="entete">
+    <a class="marque" href="index-en.html">
+      <img src="img/logo.svg" alt="" width="36" height="36">
+      <span>Bittensor, jargon-free</span>
+    </a>
+    <button class="menu-bouton" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav id="menu" class="menu" aria-label="Main navigation">
+      <ul>
+        <li><a href="index-en.html">Home</a></li>
+        <li><a href="blockchain-en.html">Blockchain</a></li>
+        <li><a href="bittensor-en.html">Bittensor</a></li>
+        <li><a href="economie-en.html">Economy</a></li>
+        <li><a href="subnets-en.html">Subnets</a></li>
+        <li><a href="participer-en.html" aria-current="page">Take part</a></li>
+        <li><a href="sources-en.html">Sources</a></li>
+      </ul>
+    </nav>
+    <div class="outils">
+      <button id="bouton-theme" class="bouton-petit" aria-pressed="true">Light mode</button>
+      <a class="bouton-petit" href="participer.html" lang="fr" hreflang="fr">Français</a>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <aside class="urgence" id="urgence" aria-label="Announcement">
+      <p><strong>Limited offer!</strong> Miner slots on subnet 64 are going fast: only <span id="minuteur">09:59</span> left to book yours.</p>
+      <a class="bouton bouton-urgence" href="#onglet-mineur">Book my slot</a>
+    </aside>
+
+    <header class="entete-page">
+      <p class="surtitre">Step 5</p>
+      <h1>Take part</h1>
+      <p class="chapeau">From the simplest to the most demanding: staking, mining, validating, creating your own subnet. Personally, I do everything with <strong>btcli</strong>, the official command-line tool, in the Mac Terminal.</p>
+    </header>
+
+    <section class="apparait" aria-labelledby="titre-installer">
+      <h2 id="titre-installer">Installing btcli on a Mac</h2>
+      <p>In the Terminal, create a separate Python environment, then install the tool in it:</p>
+      <pre class="code"><code>python3 -m venv ~/bittensor
+source ~/bittensor/bin/activate
+pip install bittensor-cli
+btcli --help</code></pre>
+      <p class="note">btcli changes fast and some commands get renamed from one version to the next. When in doubt, <code>btcli --help</code> and the <a href="https://www.bittensor.com/docs/cli" rel="noopener">official documentation</a> are the reference. The outputs below are simplified.</p>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-roles-participer">
+      <h2 id="titre-roles-participer">Choose your role</h2>
+      <div class="onglets">
+        <div role="tablist" aria-label="Roles" class="onglets-liste">
+          <button role="tab" id="onglet-staker" aria-controls="panneau-staker" aria-selected="true">Staker</button>
+          <button role="tab" id="onglet-mineur" aria-controls="panneau-mineur" aria-selected="false" tabindex="-1">Miner</button>
+          <button role="tab" id="onglet-validateur" aria-controls="panneau-validateur" aria-selected="false" tabindex="-1">Validator</button>
+          <button role="tab" id="onglet-subnet" aria-controls="panneau-subnet" aria-selected="false" tabindex="-1">Create a subnet</button>
+        </div>
+
+        <div role="tabpanel" id="panneau-staker" aria-labelledby="onglet-staker" class="panneau">
+          <div class="panneau-texte">
+            <h3>Staking: the most accessible</h3>
+            <p><span class="niveau-badge">Easy</span> No machine to run: you lend your TAO to a validator and get a share of their rewards, minus their take (18% by default).</p>
+            <ol>
+              <li>Get TAO on an exchange, then withdraw them to your own coldkey.</li>
+              <li>Start with <strong>root</strong> (subnet 0): your TAO stay TAO.</li>
+              <li>Choose a serious validator: public identity, reasonable take, track record.</li>
+              <li>Later, knowingly, stake on a subnet whose product you understand.</li>
+            </ol>
+            <p>Without a terminal, browser-extension wallets also let you stake.</p>
+          </div>
+          <div class="terminal">
+            <div class="terminal-barre"><i></i><i></i><i></i><span>zsh</span>
+              <button class="terminal-bouton rejouer">Replay</button>
+              <button class="terminal-bouton copier">Copy the commands</button>
+            </div>
+            <pre class="terminal-ecran" tabindex="0"><span class="t-comm"># 1. Create a wallet (coldkey + hotkey)</span>
+<span class="t-cmd">btcli wallet create -w me</span>
+<span class="t-sortie">Write your secret phrase on paper. Do not photograph it.</span>
+<span class="t-comm"># 2. Check your balance</span>
+<span class="t-cmd">btcli wallet balance -w me</span>
+<span class="t-sortie">Free balance: 12.0000 τ</span>
+<span class="t-comm"># 3. List the subnets and their prices</span>
+<span class="t-cmd">btcli subnets list</span>
+<span class="t-comm"># 4. Stake on root (subnet 0), the careful choice</span>
+<span class="t-cmd">btcli stake add --netuid 0 -w me</span>
+<span class="t-sortie">Choose a validator, then the amount. Confirm? [y/n]</span>
+<span class="t-comm"># 5. Follow your positions</span>
+<span class="t-cmd">btcli stake list -w me</span></pre>
+          </div>
+        </div>
+
+        <div role="tabpanel" id="panneau-mineur" aria-labelledby="onglet-mineur" class="panneau" hidden>
+          <div class="panneau-texte">
+            <h3>Mining: providing the work</h3>
+            <p><span class="niveau-badge">Demanding</span> Each subnet has its task, its rules and its recommended hardware, described in its GitHub repository.</p>
+            <ol>
+              <li>Choose a subnet and read <strong>all</strong> its documentation.</li>
+              <li>Pay the registration: the price varies with demand and is <strong>burned</strong>, never returned.</li>
+              <li>Run the miner code on a Linux or Mac machine (Windows is not supported).</li>
+              <li>Use the immunity period to improve: after that, the weakest miner is replaced by each newcomer.</li>
+            </ol>
+          </div>
+          <div class="terminal">
+            <div class="terminal-barre"><i></i><i></i><i></i><span>zsh</span>
+              <button class="terminal-bouton rejouer">Replay</button>
+              <button class="terminal-bouton copier">Copy the commands</button>
+            </div>
+            <pre class="terminal-ecran" tabindex="0"><span class="t-comm"># 1. Study the subnet: registration price, rules</span>
+<span class="t-cmd">btcli subnets show --netuid 64</span>
+<span class="t-cmd">btcli sudo get --netuid 64</span>
+<span class="t-comm"># 2. One hotkey per mining machine</span>
+<span class="t-cmd">btcli wallet new-hotkey -w me -H miner1</span>
+<span class="t-comm"># 3. Register: the price is burned, not refunded</span>
+<span class="t-cmd">btcli subnets register --netuid 64 -w me -H miner1</span>
+<span class="t-sortie">Registered. UID 173. Immunity period running.</span>
+<span class="t-comm"># 4. Run the miner code, following the subnet's repository</span>
+<span class="t-cmd">git clone https://github.com/&lt;team&gt;/&lt;subnet&gt;.git</span>
+<span class="t-cmd">python neurons/miner.py --netuid 64 --wallet.name me --wallet.hotkey miner1</span></pre>
+          </div>
+        </div>
+
+        <div role="tabpanel" id="panneau-validateur" aria-labelledby="onglet-validateur" class="panneau" hidden>
+          <div class="panneau-texte">
+            <h3>Validating: scoring the others</h3>
+            <p><span class="niveau-badge">Very demanding</span> Only the participants with the most stake in a subnet get the validator permit. In practice, you need tens of thousands of TAO, your own or lent by stakers.</p>
+            <ol>
+              <li>Register on the subnet, like a miner.</li>
+              <li>Gather enough stake to enter the validator ranking.</li>
+              <li>Run the validation code, which sends scores regularly.</li>
+              <li>Keep the coldkey <strong>away</strong> from the server: only the hotkey is needed there.</li>
+            </ol>
+          </div>
+          <div class="terminal">
+            <div class="terminal-barre"><i></i><i></i><i></i><span>zsh</span>
+              <button class="terminal-bouton rejouer">Replay</button>
+              <button class="terminal-bouton copier">Copy the commands</button>
+            </div>
+            <pre class="terminal-ecran" tabindex="0"><span class="t-comm"># A validator must be among those with the most stake</span>
+<span class="t-cmd">btcli subnets register --netuid 64 -w me -H valid1</span>
+<span class="t-cmd">btcli stake add --netuid 64 -w me -H valid1</span>
+<span class="t-comm"># Check whether you got the validator permit</span>
+<span class="t-cmd">btcli subnets metagraph --netuid 64</span>
+<span class="t-comm"># The validator code sends its scores automatically</span>
+<span class="t-cmd">python neurons/validator.py --netuid 64 --wallet.name me --wallet.hotkey valid1</span>
+<span class="t-comm"># To attract stakers: introduce yourself and set your take</span>
+<span class="t-cmd">btcli wallet set-identity -w me</span></pre>
+          </div>
+        </div>
+
+        <div role="tabpanel" id="panneau-subnet" aria-labelledby="onglet-subnet" class="panneau" hidden>
+          <div class="panneau-texte">
+            <h3>Creating a subnet: writing the rules of the game</h3>
+            <p><span class="niveau-badge">A business project</span> The creator invents a useful task and a reliable way to score it, then has to convince miners, validators and stakers to join.</p>
+            <ol>
+              <li>Test everything for free on the test network (<code>--network test</code>) or on a local chain.</li>
+              <li>Pay the creation price, which varies with demand.</li>
+              <li>Survive the four-month protection period, then attract enough TAO not to be deregistered.</li>
+            </ol>
+          </div>
+          <div class="terminal">
+            <div class="terminal-barre"><i></i><i></i><i></i><span>zsh</span>
+              <button class="terminal-bouton rejouer">Replay</button>
+              <button class="terminal-bouton copier">Copy the commands</button>
+            </div>
+            <pre class="terminal-ecran" tabindex="0"><span class="t-comm"># Practise first on the test network, for free</span>
+<span class="t-cmd">btcli subnets create -w me --network test</span>
+<span class="t-comm"># On the real network, the creation price is burned</span>
+<span class="t-cmd">btcli subnets burn-cost</span>
+<span class="t-cmd">btcli subnets create -w me</span>
+<span class="t-comm"># Write the incentive mechanism: what to mine, how to score</span>
+<span class="t-cmd">git clone https://github.com/opentensor/bittensor-subnet-template.git</span></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-utiliser">
+      <h2 id="titre-utiliser">Or simply: use what the network produces</h2>
+      <p>You can take part without owning a single TAO: as a customer. Several subnets sell their services like any company, for example open AI models through the <a href="https://chutes.ai" rel="noopener">Chutes</a> API, or graphics card rental on <a href="https://lium.io" rel="noopener">Lium</a>.</p>
+    </section>
+
+    <section class="apparait encadre encadre-orange" aria-labelledby="titre-securite">
+      <h2 id="titre-securite">Six safety rules</h2>
+      <ol class="liste-securite">
+        <li>The secret phrase is written <strong>on paper</strong>. Never in a photo, never in a file, never in a chat.</li>
+        <li>No “support” will ever ask for it. Anyone who asks is trying to rob you.</li>
+        <li>The coldkey never goes on a mining or validating machine.</li>
+        <li>Try everything on the test network first.</li>
+        <li>Only stake what you are ready to lose entirely.</li>
+        <li>Distrust any rushed offer: urgency is the scammers' favourite weapon.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="pied">
+    <p class="pied-logo">τ</p>
+    <p>A website by Alexandre Majchrzak, introducing Bittensor to people who have never used a blockchain.</p>
+    <p>This website explains, it does not advise: nothing here is financial advice. Cryptocurrencies can lose almost all of their value.</p>
+    <p>Information checked on 11 November 2026. <a href="sources-en.html">Sources and credits</a> · <a href="#haut">Back to top</a></p>
+  </footer>
+</body>
+</html>

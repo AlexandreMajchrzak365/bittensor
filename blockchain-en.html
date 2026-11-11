@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blockchain in five minutes · Bittensor, jargon-free</title>
+  <meta name="description" content="What a blockchain, a hash, a wallet and a key are, with an interactive demo.">
+  <meta name="author" content="Alexandre Majchrzak">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="fr" href="blockchain.html">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body id="haut" class="sombre page-blockchain">
+  <a class="saut" href="#contenu">Skip to content</a>
+  <div class="progression" aria-hidden="true"><span></span></div>
+
+  <header class="entete">
+    <a class="marque" href="index-en.html">
+      <img src="img/logo.svg" alt="" width="36" height="36">
+      <span>Bittensor, jargon-free</span>
+    </a>
+    <button class="menu-bouton" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav id="menu" class="menu" aria-label="Main navigation">
+      <ul>
+        <li><a href="index-en.html">Home</a></li>
+        <li><a href="blockchain-en.html" aria-current="page">Blockchain</a></li>
+        <li><a href="bittensor-en.html">Bittensor</a></li>
+        <li><a href="economie-en.html">Economy</a></li>
+        <li><a href="subnets-en.html">Subnets</a></li>
+        <li><a href="participer-en.html">Take part</a></li>
+        <li><a href="sources-en.html">Sources</a></li>
+      </ul>
+    </nav>
+    <div class="outils">
+      <button id="bouton-theme" class="bouton-petit" aria-pressed="true">Light mode</button>
+      <a class="bouton-petit" href="blockchain.html" lang="fr" hreflang="fr">Français</a>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <header class="entete-page">
+      <p class="surtitre">Step 1</p>
+      <h1>Blockchain in five minutes</h1>
+      <p class="chapeau">Before Bittensor, you need to understand the tool it is built on: a big account book that everyone can read, nobody can erase, and nobody owns.</p>
+    </header>
+
+    <section class="apparait" aria-labelledby="titre-probleme">
+      <h2 id="titre-probleme">The problem: keeping accounts without a boss</h2>
+      <p>In a class, one person holds the trip money and writes down who has paid. Everyone trusts them… until the day the notebook disappears or gets changed.</p>
+      <p>A blockchain replaces that person with <strong>thousands of copies of the same notebook</strong>, kept by computers all over the world. To cheat, you would have to change most of the copies at the same time: in practice, it is impossible.</p>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-demo">
+      <h2 id="titre-demo">Your turn: try to cheat</h2>
+      <p>Each page of the notebook is called a <strong>block</strong>. Each block carries a <strong>fingerprint</strong> (a “hash”) computed from its content <em>and</em> from the fingerprint of the previous block. Change a single letter in a block and watch what happens to the next ones.</p>
+      <div id="chaine" class="chaine" data-langue="en">
+        <article class="bloc" data-index="0"><h3>Block 1</h3><label for="donnees-0">Content</label><textarea id="donnees-0" rows="3">Lea sends 5 TAO to Noah</textarea><p class="hash-ligne">Previous: <code class="precedent">0000…</code></p><p class="hash-ligne">Hash: <code class="empreinte"></code></p><p class="etat-bloc"></p></article>
+        <article class="bloc" data-index="1"><h3>Block 2</h3><label for="donnees-1">Content</label><textarea id="donnees-1" rows="3">Noah sends 2 TAO to Sam</textarea><p class="hash-ligne">Previous: <code class="precedent"></code></p><p class="hash-ligne">Hash: <code class="empreinte"></code></p><p class="etat-bloc"></p></article>
+        <article class="bloc" data-index="2"><h3>Block 3</h3><label for="donnees-2">Content</label><textarea id="donnees-2" rows="3">Sam stakes 1 TAO with a validator</textarea><p class="hash-ligne">Previous: <code class="precedent"></code></p><p class="hash-ligne">Hash: <code class="empreinte"></code></p><p class="etat-bloc"></p></article>
+        <article class="bloc" data-index="3"><h3>Block 4</h3><label for="donnees-3">Content</label><textarea id="donnees-3" rows="3">The network creates 0.5 TAO</textarea><p class="hash-ligne">Previous: <code class="precedent"></code></p><p class="hash-ligne">Hash: <code class="empreinte"></code></p><p class="etat-bloc"></p></article>
+      </div>
+      <p class="actions-demo"><button id="reparer" class="bouton bouton-contour">Restore the original content</button></p>
+      <p class="message-demo" id="message-chaine" aria-live="polite"></p>
+      <p class="note">The hashes are computed live with the SHA-256 algorithm, the same one Bitcoin uses. Only the first 16 characters are shown.</p>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-qui">
+      <h2 id="titre-qui">Who gets to write the next block?</h2>
+      <p>That is the real question of every blockchain. Bitcoin rewards those who solve a very expensive calculation that is completely useless outside the network: this is <strong>proof of work</strong>. Entire farms of machines do nothing else.</p>
+      <p>Bittensor makes a different bet: <strong>what if the rewarded work were useful?</strong> Its blockchain, called Subtensor, does not pay for empty calculations but for artificial intelligence services, scored by other participants. The next page shows how.</p>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-cles">
+      <h2 id="titre-cles">The wallet: a safe and a badge</h2>
+      <div class="media-texte">
+        <img src="img/cles.svg" alt="Drawing of a safe labelled coldkey linked by a dotted line to a badge labelled hotkey" width="360" height="180">
+        <div>
+          <p>On Bittensor, a wallet is made of two keys:</p>
+          <ul>
+            <li>The <strong>coldkey</strong> is the safe: it owns your TAO and approves spending. It stays out of harm's way, ideally on a computer that does nothing else.</li>
+            <li>The <strong>hotkey</strong> is the work badge: the machine that mines or validates uses it to sign its work, without ever being able to empty the safe.</li>
+          </ul>
+          <p>The safe opens with a <strong>secret phrase</strong> of 12 or 24 words. Whoever knows these words owns the funds, for good: no bank and no customer service can give them back.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-video-chaine">
+      <h2 id="titre-video-chaine">The same thing, as a video</h2>
+      <p>The Simply Explained channel shows in six minutes how blocks, hashes and the network's copies protect each other.</p>
+      <div class="video">
+        <iframe src="https://www.youtube-nocookie.com/embed/SSo_EIwHSd4" title="Video: How does a blockchain work, by Simply Explained" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p class="source">Source: Simply Explained, “How does a blockchain work”, YouTube.</p>
+    </section>
+
+    <section class="apparait" aria-labelledby="titre-glossaire">
+      <h2 id="titre-glossaire">A little vocabulary</h2>
+      <dl class="glossaire">
+        <dt>Block</dt><dd>A page of the ledger, grouping the operations of the last few seconds.</dd>
+        <dt>Hash</dt><dd>A code computed from some content. The smallest change in the content gives a completely different hash.</dd>
+        <dt>Token</dt><dd>A unit of value recorded on the blockchain, like TAO.</dd>
+        <dt>Wallet</dt><dd>The keys that prove some tokens belong to you. The tokens themselves stay on the blockchain.</dd>
+        <dt>Staking</dt><dd>Locking tokens to support a network participant and receive a share of their rewards.</dd>
+      </dl>
+      <p class="suite"><a class="bouton" href="bittensor-en.html">Next step: Bittensor →</a></p>
+    </section>
+  </main>
+
+  <footer class="pied">
+    <p class="pied-logo">τ</p>
+    <p>A website by Alexandre Majchrzak, introducing Bittensor to people who have never used a blockchain.</p>
+    <p>This website explains, it does not advise: nothing here is financial advice. Cryptocurrencies can lose almost all of their value.</p>
+    <p>Information checked on 11 November 2026. <a href="sources-en.html">Sources and credits</a> · <a href="#haut">Back to top</a></p>
+  </footer>
+</body>
+</html>
