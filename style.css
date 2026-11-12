@@ -155,8 +155,8 @@ summary { cursor: pointer; font-weight: 700; color: var(--accent); }
 .carte-role:hover { transform: translateY(-6px) rotate(-0.5deg); }
 
 .chiffres { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; }
-.chiffres > div { padding: 1.4rem; border-radius: 18px; background: var(--carte); border: 1px solid var(--bord); }
-.chiffre { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; margin: 0; font-variant-numeric: tabular-nums; color: var(--accent); }
+.chiffres > div { padding: 1.4rem; border-radius: 18px; background: var(--carte); border: 1px solid var(--bord); container-type: inline-size; }
+.chiffre { font-size: min(2.8rem, 13cqi); font-weight: 800; margin: 0; font-variant-numeric: tabular-nums; color: var(--accent); white-space: nowrap; }
 .chiffres p:last-child { margin-bottom: 0; color: var(--doux); font-size: 0.95rem; }
 
 .video { position: relative; aspect-ratio: 16 / 9; border-radius: 18px; overflow: hidden; background: #000; box-shadow: var(--ombre); }
